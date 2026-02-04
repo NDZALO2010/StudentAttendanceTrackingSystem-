@@ -73,6 +73,19 @@ docker compose up --build -d
 
 The frontend will be served by Nginx at `http://localhost:5173` and the backend at `http://localhost:5000`.
 
+If you prefer to run the **Vite dev server inside a container** (hot reload), run:
+
+```bash
+# From repository root
+docker compose -f docker-compose.dev.yml up --build -d
+```
+
+Stop the static frontend first if necessary:
+
+```bash
+docker compose stop frontend
+```
+
 **✅ Backend should now be running on http://localhost:5000**
 
 ### Step 3: Frontend Setup (3 minutes)

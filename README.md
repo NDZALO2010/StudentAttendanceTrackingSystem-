@@ -78,7 +78,22 @@ This command builds and starts the Postgres DB, backend, and a static frontend s
 docker compose down
 ```
 
-**Note:** The repository also contains `backend/docker-compose.yml` for running only the backend + DB if you prefer that smaller setup.
+**Frontend development (hot-reload) using Docker**
+
+If you want to run the **Vite dev server inside a container** (so your host environment doesn't need Node installed), use the provided dev compose file:
+
+```bash
+# From repository root
+docker compose -f docker-compose.dev.yml up --build -d
+```
+
+This starts a `frontend-dev` container that mounts `./frontend` and runs `npm run dev` with host 0.0.0.0 so you can access the app at `http://localhost:5173` while still getting hot reload.
+
+**Note:** If you previously started the static `frontend` service (Nginx), stop it first to free port 5173:
+
+```bash
+docker compose stop frontend
+```
 
 ### 3. Frontend Setup
 ```bash

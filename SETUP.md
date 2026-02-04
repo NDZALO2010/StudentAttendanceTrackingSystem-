@@ -77,6 +77,18 @@ To stop and remove the full-stack containers and networks:
 docker compose down
 ```
 
+Run the frontend dev server inside a container (hot reload)
+
+```bash
+# Start the dev frontend container that runs Vite and mounts your source files
+docker compose -f docker-compose.dev.yml up --build -d
+
+# Stop the static frontend service first if it's running (it binds port 5173)
+docker compose stop frontend
+```
+
+This is useful if you want consistent dev environment across machines and don't want to install Node locally.
+
 ## Step 2: Backend Setup
 
 1. **Navigate to backend directory**:
