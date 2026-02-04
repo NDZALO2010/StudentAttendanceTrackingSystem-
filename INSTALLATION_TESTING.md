@@ -107,19 +107,40 @@ Alternatively, you can use the provided Docker Compose configuration to start bo
 
 ```bash
 # From repository root
-docker-compose -f backend/docker-compose.yml up --build -d
+docker compose -f backend/docker-compose.yml up --build -d
 ```
 
 The compose setup will build the backend image, start PostgreSQL, and run the migrations and demo seeder automatically via the backend startup script. Check backend logs with:
 
 ```bash
-docker-compose -f backend/docker-compose.yml logs -f backend
+docker compose -f backend/docker-compose.yml logs -f backend
 ```
 
 Stop and remove containers with:
 
 ```bash
-docker-compose -f backend/docker-compose.yml down
+docker compose -f backend/docker-compose.yml down
+```
+
+**Option D: Full stack with one command**
+
+To run DB + backend + frontend together (frontend served by Nginx):
+
+```bash
+# From repository root
+docker compose up --build -d
+```
+
+Check frontend logs with:
+
+```bash
+docker compose logs -f frontend
+```
+
+Stop and remove containers with:
+
+```bash
+docker compose down
 ```
 
 ### Step 5: Configure Environment Variables

@@ -46,22 +46,35 @@ docker run --name sats-postgres \
 
 ### Option C: Run Backend & DB with Docker Compose
 
-From the repository root, run:
+From the repository root, run (backend-only):
 
 ```bash
-docker-compose -f backend/docker-compose.yml up --build -d
+# run only backend + db
+docker compose -f backend/docker-compose.yml up --build -d
 ```
 
-This will build and start the `db` and `backend` services. The backend container runs a startup script that waits for the database to be ready, runs migrations, and seeds demo data automatically. To view logs:
+This will build and start the `db` and `backend` services. The backend container runs a startup script that waits for the database to be ready, runs migrations, and seeds demo data automatically.
+
+### Option D: Run the full stack (DB + Backend + Frontend)
+
+To run everything (frontend served by Nginx) with one command from the repository root, run:
 
 ```bash
-docker-compose -f backend/docker-compose.yml logs -f backend
+# runs db, backend, and frontend
+docker compose up --build -d
 ```
 
-To stop and remove the containers and networks:
+To follow logs:
 
 ```bash
-docker-compose -f backend/docker-compose.yml down
+docker compose logs -f frontend
+docker compose logs -f backend
+```
+
+To stop and remove the full-stack containers and networks:
+
+```bash
+docker compose down
 ```
 
 ## Step 2: Backend Setup

@@ -59,10 +59,19 @@ npm run dev
 
 ```bash
 # From repository root
-docker-compose -f backend/docker-compose.yml up --build -d
+docker compose -f backend/docker-compose.yml up --build -d
 ```
 
 This will bring up the database and backend services; the backend startup script runs migrations and seeds automatically.
+
+**To run the full stack (DB + backend + frontend)**:
+
+```bash
+# From repository root
+docker compose up --build -d
+```
+
+The frontend will be served by Nginx at `http://localhost:5173` and the backend at `http://localhost:5000`.
 
 **✅ Backend should now be running on http://localhost:5000**
 
