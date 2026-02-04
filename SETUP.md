@@ -87,6 +87,16 @@ docker compose -f docker-compose.dev.yml up --build -d
 docker compose stop frontend
 ```
 
+Or use the convenience npm scripts from the repository root:
+
+```bash
+# Start frontend dev container
+npm run dev:up
+
+# Stop frontend dev container
+npm run dev:down
+```
+
 This is useful if you want consistent dev environment across machines and don't want to install Node locally.
 
 ## Step 2: Backend Setup

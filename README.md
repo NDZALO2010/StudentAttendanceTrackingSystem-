@@ -78,6 +78,29 @@ This command builds and starts the Postgres DB, backend, and a static frontend s
 docker compose down
 ```
 
+**Quick helper scripts (recommended)**
+
+If you prefer a short command, use the root npm scripts:
+
+```bash
+# Start full stack (build images)
+npm run stack:up
+
+# Stop full stack
+npm run stack:down
+
+# Start frontend dev container (Vite hot reload)
+npm run dev:up
+
+# Stop frontend dev container
+npm run dev:down
+```
+
+You can also use the included cross-platform helper scripts:
+
+- PowerShell: `.\	emplates\scripts\dev.ps1 up|down`  (or `.\	emplates\scripts\dev.ps1 up`)  
+- POSIX: `./scripts/dev.sh up|down`
+
 **Frontend development (hot-reload) using Docker**
 
 If you want to run the **Vite dev server inside a container** (so your host environment doesn't need Node installed), use the provided dev compose file:

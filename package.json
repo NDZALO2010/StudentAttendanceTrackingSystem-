@@ -1,0 +1,13 @@
+{
+  "name": "edutracersystem",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev:up": "docker compose -f docker-compose.dev.yml up -d",
+    "dev:down": "docker compose -f docker-compose.dev.yml down",
+    "stack:up": "docker compose up --build -d",
+    "stack:down": "docker compose down",
+    "frontend:dev": "docker compose -f docker-compose.dev.yml up -d frontend-dev",
+    "frontend:stop": "docker compose stop frontend || true"
+  }
+}
