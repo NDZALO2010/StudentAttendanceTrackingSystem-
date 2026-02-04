@@ -2,9 +2,9 @@
 FROM node:20 AS build
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies (including dev deps for build)
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci
 
 # Copy source and build
 COPY . .
