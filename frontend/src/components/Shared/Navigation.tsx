@@ -93,13 +93,13 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
   const navItems = user?.role === 'lecturer' ? lecturerNavItems : studentNavItems;
 
   const drawer = (
-    <Box>
-      <Toolbar>
+    <Box sx={{ width: 240 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 2, py: 2, minHeight: '64px' }}>
         <School sx={{ mr: 2, color: 'primary.main' }} />
         <Typography variant="h6" noWrap component="div" fontWeight="bold">
           SATS
         </Typography>
-      </Toolbar>
+      </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -215,12 +215,15 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: 240,
+            position: 'fixed',
+            top: 0,
+            height: '100vh',
           },
         }}
         open
       >
         {drawer}
-      </Drawer>
+      </Drawer> 
 
       {/* Drawer for Mobile */}
       <Drawer
@@ -247,7 +250,8 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { md: `calc(100% - 240px)` },
+          ml: { md: '240px' },
+          width: { xs: '100%', md: `calc(100% - 240px)` },
           minHeight: '100vh',
           bgcolor: 'background.default',
         }}

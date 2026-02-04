@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "docker-start": "node scripts/docker-start.js",
     "migrate": "node migrations/run-migrations.js",
     "seed": "node seeders/demo-data.js",
     "test": "jest --coverage"

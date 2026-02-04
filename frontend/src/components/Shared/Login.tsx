@@ -21,9 +21,13 @@ import {
   Person,
   Email,
   Lock,
+  Brightness4,
+  Brightness7,
 } from '@mui/icons-material';
+import { useTheme as muiUseTheme } from '@mui/material/styles';
 import { useAuth } from '../../context/AuthContext';
 import { useSnackbar } from 'notistack';
+import { useTheme as useAppTheme } from '../../context/ThemeContext';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,6 +47,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const { login, register } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
+  const { mode, toggleTheme } = useAppTheme();
+  const muiTheme = muiUseTheme();
 
   const [tabValue, setTabValue] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -136,7 +142,10 @@ const Login: React.FC = () => {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background:
+          mode === 'dark'
+            ? 'linear-gradient(135deg, #0f172a 0%, #1f2937 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         py: 4,
       }}
     >
@@ -146,8 +155,15 @@ const Login: React.FC = () => {
           sx={{
             p: 4,
             borderRadius: 3,
+            position: 'relative',
           }}
         >
+          {/* Theme toggle */}
+          <Box sx={{ position: 'absolute', top: 12, right: 12 }}>
+            <IconButton onClick={toggleTheme} size="small" aria-label="toggle theme">
+              {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+            </IconButton>
+          </Box>
           {/* Logo and Title */}
           <Box sx={{ textAlign: 'center', mb: 3 }}>
             <School sx={{ fontSize: 60, color: 'primary.main', mb: 1 }} />
@@ -240,7 +256,15 @@ const Login: React.FC = () => {
               </Button>
 
               {/* Demo Credentials */}
-              <Box sx={{ mt: 2, p: 2, bgcolor: 'grey.100', borderRadius: 1 }}>
+              <Box
+                sx={{
+                  mt: 2,
+                  p: 2,
+                  bgcolor: 'background.paper',
+                  borderRadius: 1,
+                  boxShadow: 1,
+                }}
+              >
                 <Typography variant="caption" display="block" gutterBottom>
                   <strong>Demo Credentials:</strong>
                 </Typography>
