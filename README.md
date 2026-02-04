@@ -60,6 +60,18 @@ npm run seed  # Load demo data
 npm run dev
 ```
 
+**Or use Docker Compose to run the database and backend together**:
+
+```bash
+# From repository root
+docker-compose -f backend/docker-compose.yml up --build -d
+
+# Follow backend logs
+docker-compose -f backend/docker-compose.yml logs -f backend
+```
+
+The Docker Compose setup will build the backend image, start a Postgres container, and run migrations & seeders automatically via the included startup script. Backend will be available at `http://localhost:5000`. Adjust credentials in `backend/docker-compose.yml` or your environment as needed.
+
 ### 3. Frontend Setup
 ```bash
 cd frontend

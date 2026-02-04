@@ -55,6 +55,15 @@ npm run seed
 npm run dev
 ```
 
+**Alternatively, start the backend and DB with Docker Compose:**
+
+```bash
+# From repository root
+docker-compose -f backend/docker-compose.yml up --build -d
+```
+
+This will bring up the database and backend services; the backend startup script runs migrations and seeds automatically.
+
 **✅ Backend should now be running on http://localhost:5000**
 
 ### Step 3: Frontend Setup (3 minutes)
