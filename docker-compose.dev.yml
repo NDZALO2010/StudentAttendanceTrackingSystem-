@@ -12,8 +12,6 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development
     command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
-    depends_on:
-      - backend
     networks:
       - edutracersystem_default
 
